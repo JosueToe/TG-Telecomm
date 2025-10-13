@@ -1,0 +1,167 @@
+TG TELECOMM — SITE ARCHITECTURE, CONTENT OUTLINE, AND STYLE GUIDE (inspired by “TORNET” aesthetic)
+
+BRAND ESSENTIALS
+Name: TG Telecomm
+Positioning: “The Local Link to a Global Network”
+Region: Miami (coverage details not fully specified — add a Coverage Checker and service-area page)
+Value props:
+No‑contract plans
+Fast, reliable wireless internet
+Unlimited bandwidth on primary plans
+Business-ready connectivity and 4G/5G backup
+Fast online and phone support
+Social proof: Real customer testimonials (e.g., Pavel Alonso, Dennis Portieri)
+Focus/Interactive States: Use accent lime with 8–12% glow/outer shadow Note: Validate contrast; ensure AA/AAA for body text (<#3B0E7A on light, #FFFFFF on deep purple>)
+TYPOGRAPHY
+Display/Headings: Sora or Poppins, 700–800 weight, tight line-height
+Body: Inter 400–500
+Numeric/Plans: Tabular numerals for prices/mbps
+Sample scale: H1 64–80, H2 40–56, H3 28–32, body 16–18
+GLOBAL UI PATTERNS
+Header: Glassmorphism nav (blur 12–16px), pill hover underline for active link, right-aligned “Check Coverage” + “Get Started”
+Buttons: Pill buttons; Primary = Neon Lime on deep purple; Secondary = ghost white on purple
+Cards: Rounded 16–20px, soft inner glow, subtle gradient borders
+Icons: Simple line icons with duotone purple/lime
+Sections: 96–120px vertical rhythm, zig‑zag composition, decorative network patterns in corners
+SITE MAP (PRIMARY NAV)
+Home
+Plans & Pricing
+Features
+Coverage
+Business
+Support
+Blog/Updates
+About
+Contact
+HOME PAGE OUTLINE A. Hero
+Headline (bold, multi-line): “Connect Miami to the World — Without Wires”
+Subheadline: “No‑contract home, business, and 4G/5G backup internet with unlimited bandwidth and fast support.”
+Primary CTA: Get Started
+Secondary CTA: Check Coverage
+Badges: “No Contracts” “Miami Local” “Secure Network”
+Micro: “Fast online and phone support”
+B. Quick Plans (3 cards)
+
+Home Internet — $60/mo
+No contract
+Up to 10 users
+Unlimited bandwidth
+Secure network
+CTA: Choose Home
+Business Internet — $80/mo
+No contract
+Up to 20 users
+Unlimited bandwidth
+Secure network
+CTA: Choose Business
+Backup Internet — $110/mo
+No contract
+4G/5G fast internet
+Router for 1 user
+100 GB bandwidth
+Secure network
+CTA: Choose Backup
+C. Feature Grid (6 icons)
+
+Reliable Wireless Connectivity
+Unlimited Bandwidth (Home/Business)
+No‑Contract Flexibility
+Secure Network
+Fast Online Support
+Miami‑Local Service
+D. “Why TG Telecomm” Highlight
+
+Short paragraph on local expertise + performance + support ethos
+Mini metric row (editable): “Avg setup time”, “Uptime target”, “Customer satisfaction” (add real metrics when available)
+E. Testimonials Carousel
+
+Quote 1: “Excellent customer service and incredible speeds/low ping…” — Pavel Alonso
+Quote 2: “I have been a customer for 2 years… Highly recommended.” — Dennis Portieri
+F. Coverage + CTA
+
+“Serving the Miami area” (add precise neighborhoods/zips when available)
+Coverage Checker: enter address/ZIP → result page/lead form
+CTA: Check Coverage
+G. Blog/Updates Teaser (optional)
+
+2–3 cards: service news, tips, feature updates
+H. Final CTA Band
+
+“Ready to get connected?” — Get Started
+“Have questions?” — Contact Support
+I. Footer
+
+Quick Links: Plans & Pricing, Features, Coverage, Business, Support, Blog, About, Contact
+Legal: Terms, Privacy, Acceptable Use
+Contact block: Phone, Email, Hours, Address (add real details)
+Social icons
+PLANS & PRICING PAGE
+Header blurb: “Choose the speed and flexibility that fits you. No contracts.”
+Plan Cards (repeat details with richer bullets)
+Home Internet — $60/mo: up to 10 users, unlimited bandwidth, secure network
+Business Internet — $80/mo: up to 20 users, unlimited bandwidth, secure network
+Backup Internet — $110/mo: 4G/5G, router for 1 user, 100 GB bandwidth, secure network
+Add-ons/notes: Installation, router options, static IP (if applicable; add when confirmed)
+FAQ: billing, contract, equipment, data policies, outages, support
+CTA: Get Started / Contact Sales
+FEATURES PAGE
+Sections:
+Performance & Reliability
+Security & Privacy
+Unlimited Bandwidth (home/business)
+4G/5G Backup Continuity
+Support Experience (fast online and phone support)
+Each with icon, short paragraph, and proof point
+COVERAGE PAGE
+Map or ZIP/address checker (lead capture if out of area)
+Text: “Focused on Miami” (include neighborhoods when confirmed)
+CTA: Check Coverage / Notify Me
+BUSINESS PAGE
+Hero: “Business Connectivity Services — Streamlined Solutions for Communication”
+Use cases: Retail, Restaurants, Offices, Remote/Failover
+Plan: Business Internet $80/mo details
+Backup: 4G/5G failover with 100 GB
+CTA: Talk to an Expert / Request Quote
+SUPPORT PAGE
+“Fast Online Support” + “Fast Phone Support”
+Contact methods: Phone, Email, Form, Hours (insert real info)
+Knowledge base: Setup, billing, troubleshooting
+Service status link (optional)
+CTA: Contact Support
+BLOG/UPDATES
+Articles: network tips, product updates, community posts
+ABOUT
+Mission: “The Local Link to a Global Network”
+Miami focus, customer-first values
+Team snapshot (optional)
+CTA: Join Us / Contact
+CONTACT
+Form: name, email, phone, address/ZIP, message
+Map/address, phone, email, hours (insert real info)
+CTA: Send / Call Now
+ACCESSIBILITY & SEO BASICS
+Color contrast AA/AAA; focus states; keyboard nav
+Semantic headings; alt text for all icons/illustrations
+Meta titles/descriptions per page (≤60/≤155 chars)
+Open Graph/Twitter cards
+Local SEO: “Miami wireless internet,” NAP consistency
+COMPONENT INVENTORY (REUSABLE)
+Header/Nav (glass)
+Hero with big gradient headline
+Plan card grid
+Feature icon grid
+Testimonials carousel
+Coverage checker
+FAQ accordion
+Blog card list
+CTA bands
+Footer with multi-column links
+SAMPLE COPY SNIPPETS (EDITABLE)
+Hero H1: “Connect with the World — Without Wires”
+Subhead: “No‑contract internet for homes and businesses in Miami, with unlimited bandwidth and fast support.”
+Button labels: “Get Started” / “Check Coverage” / “Contact Support”
+Trust chips: “No Contracts” “Unlimited Bandwidth” “Miami Local” “Secure Network”
+Plan notes:
+Home: “Great for up to 10 users”
+Business: “Built for teams up to 20 users”
+Backup: “4G/5G failover with 100 GB data” End of file.
