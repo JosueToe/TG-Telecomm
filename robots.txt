@@ -1,0 +1,15 @@
+# TG Telecomm - robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://tgtelecomm.com/sitemap.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 1
+
+# Disallow specific paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check if TG Telecomm is available in your area. Enter your Miami address or ZIP code to see coverage and get started.">
+    <meta name="keywords" content="Miami internet coverage, check internet availability, service area Miami">
+    
+    <title>Coverage - TG Telecomm | Check Availability in Miami</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📡</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">TG TELECOMM</a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="plans.html">Plans & Pricing</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="coverage.html" class="active">Coverage</a></li>
+                <li><a href="business.html">Business</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="coverage.html" class="btn btn-ghost hide-mobile">Check Coverage</a>
+                <a href="contact.html" class="btn btn-primary">Get Started</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" style="min-height: 70vh;">
+            <div class="container">
+                <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                    <h1>Check Your <span class="gradient-text">Coverage</span></h1>
+                    <p class="hero-subheadline" style="margin: 0 auto;">
+                        Enter your address or ZIP code to see if TG Telecomm is available in your area.
+                    </p>
+                    
+                    <div class="coverage-checker" style="margin-top: 3rem;">
+                        <form class="coverage-form" id="coverageFormHero">
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                placeholder="Enter your address or ZIP code" 
+                                aria-label="Enter address or ZIP code"
+                                required
+                            >
+                            <button type="submit" class="btn btn-primary">Check Now</button>
+                        </form>
+                    </div>
+                    
+                    <div id="coverageResult"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Area -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Service Area</span>
+                    <h2 class="section-title">Proudly Serving <span class="lime-text">Miami</span></h2>
+                    <p class="section-description">
+                        We're focused on delivering exceptional internet service throughout the Miami metropolitan area.
+                    </p>
+                </div>
+                
+                <!-- Coverage Map Placeholder -->
+                <div class="coverage-map">
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🗺️</div>
+                        <h3 style="color: var(--white); margin-bottom: 1rem;">Miami Coverage Map</h3>
+                        <p style="color: rgba(255, 255, 255, 0.6); max-width: 500px; margin: 0 auto;">
+                            We currently serve most areas in Miami and are rapidly expanding our coverage. 
+                            Use the coverage checker above to confirm availability at your specific address.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Coverage Areas List -->
+                <div style="margin-top: 4rem;">
+                    <h3 class="text-center" style="margin-bottom: 2rem;">Popular Coverage Areas</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div class="feature-card" style="text-align: left;">
+                            <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem;">🏙️ Downtown Miami</h4>
+                            <p style="margin-bottom: 0; font-size: 0.9rem;">Brickell, Financial District, Arts District</p>
+                        </div>
+                        
+                        <div class="feature-card" style="text-align: left;">
+                            <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem;">🏖️ Miami Beach</h4>
+                            <p style="margin-bottom: 0; font-size: 0.9rem;">South Beach, Mid-Beach, North Beach</p>
+                        </div>
+                        
+                        <div class="feature-card" style="text-align: left;">
+                            <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem;">🌴 Coral Gables</h4>
+                            <p style="margin-bottom: 0; font-size: 0.9rem;">Miracle Mile, University District</p>
+                        </div>
+                        
+                        <div class="feature-card" style="text-align: left;">
+                            <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem;">🏡 Coconut Grove</h4>
+                            <p style="margin-bottom: 0; font-size: 0.9rem;">Central Grove, South Grove</p>
+                        </div>
+                        
+                        <div class="feature-card" style="text-align: left;">
+                            <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem;">🎨 Wynwood</h4>
+                            <p style="margin-bottom: 0; font-size: 0.9rem;">Wynwood Arts District, Midtown</p>
+                        </div>
+                        
+                        <div class="feature-card" style="text-align: left;">
+                            <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem;">🌊 Key Biscayne</h4>
+                            <p style="margin-bottom: 0; font-size: 0.9rem;">Village Center, Crandon Park</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Coverage Matters -->
+        <section class="section" style="background: var(--deep-purple-light);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Expanding <span class="lime-text">Every Day</span></h2>
+                    <p class="section-description">
+                        We're continuously growing our network to reach more Miami neighborhoods
+                    </p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">Rapid Expansion</h3>
+                        <p class="feature-description">
+                            Our infrastructure grows weekly as we add new towers and expand coverage to underserved areas.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3 class="feature-title">Local Focus</h3>
+                        <p class="feature-description">
+                            We prioritize Miami neighborhoods based on community needs and demand.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📢</div>
+                        <h3 class="feature-title">Get Notified</h3>
+                        <p class="feature-description">
+                            Not covered yet? Register your address and we'll notify you when service becomes available.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Not Covered CTA -->
+        <section class="section">
+            <div class="container">
+                <div class="coverage-checker" style="max-width: 700px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">Not in Our Coverage Area Yet?</h3>
+                        <p style="color: rgba(255, 255, 255, 0.8);">
+                            Let us know you're interested! We expand based on demand, and your request helps us 
+                            prioritize new coverage areas.
+                        </p>
+                    </div>
+                    
+                    <form id="notifyForm" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                placeholder="Your full address" 
+                                required
+                            >
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <input 
+                                type="email" 
+                                class="form-input" 
+                                placeholder="Your email address" 
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Notify Me When Available
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-content text-center">
+                    <h2>Ready to Get <span class="gradient-text">Connected?</span></h2>
+                    <p>If we're in your area, you can be online in as little as 24 hours.</p>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn btn-primary">Get Started</a>
+                        <a href="plans.html" class="btn btn-secondary">View Plans</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TG TELECOMM</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">
+                        The local link to a global network. Connecting Miami with fast, reliable wireless internet.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="plans.html">Plans & Pricing</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="coverage.html">Coverage</a></li>
+                        <li><a href="business.html">Business</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255, 255, 255, 0.8);">📞 +1 (305) XXX-XXXX</li>
+                        <li><a href="mailto:info@tgtelecomm.com">✉️ info@tgtelecomm.com</a></li>
+                        <li style="color: rgba(255, 255, 255, 0.8);">🕒 Mon-Fri: 9AM-6PM</li>
+                        <li style="color: rgba(255, 255, 255, 0.8);">📍 Miami, FL</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TG Telecomm. All rights reserved. Built with ❤️ in Miami.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Additional coverage form handling
+        const coverageFormHero = document.getElementById('coverageFormHero');
+        if (coverageFormHero) {
+            coverageFormHero.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const input = coverageFormHero.querySelector('input');
+                const address = input.value.trim();
+                
+                if (address) {
+                    // Update URL and trigger result display
+                    window.history.pushState({}, '', `coverage.html?address=${encodeURIComponent(address)}`);
+                    displayCoverageResult(address);
+                }
+            });
+        }
+        
+        // Notify form
+        const notifyForm = document.getElementById('notifyForm');
+        if (notifyForm) {
+            notifyForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const submitButton = notifyForm.querySelector('button[type="submit"]');
+                submitButton.textContent = '✓ Request Submitted!';
+                submitButton.style.background = 'var(--neon-lime)';
+                submitButton.style.color = 'var(--deep-purple)';
+                setTimeout(() => {
+                    notifyForm.reset();
+                    submitButton.textContent = 'Notify Me When Available';
+                    submitButton.style.background = '';
+                    submitButton.style.color = '';
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
+

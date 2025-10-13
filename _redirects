@@ -1,0 +1,12 @@
+# Netlify Redirects File
+
+# Redirect www to non-www
+https://www.tgtelecomm.com/*  https://tgtelecomm.com/:splat  301!
+
+# Handle old URLs or common typos (add as needed)
+/support  /ticket.html  301
+/open-ticket  /ticket.html  301
+
+# SPA fallback - must be last
+/*  /index.html  200
+

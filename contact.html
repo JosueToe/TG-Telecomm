@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact TG Telecomm - Get started with fast, no-contract internet in Miami. Fill out our form or call us directly for immediate assistance.">
+    <meta name="keywords" content="contact TG Telecomm, get started, Miami internet signup, contact form">
+    
+    <title>Contact Us - TG Telecomm | Get Started Today</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📡</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">TG TELECOMM</a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="plans.html">Plans & Pricing</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="business.html">Business</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="coverage.html" class="btn btn-ghost hide-mobile">Check Coverage</a>
+                <a href="contact.html" class="btn btn-primary">Get Started</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" style="min-height: 60vh;">
+            <div class="container">
+                <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                    <h1>Let's Get You <span class="gradient-text">Connected</span></h1>
+                    <p class="hero-subheadline" style="margin: 0 auto;">
+                        Fill out the form below, and we'll reach out within 24 hours to set up your service.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: start;">
+                    <!-- Contact Form -->
+                    <div class="feature-card" style="padding: 3rem;">
+                        <h2 style="margin-bottom: 2rem;">Get Started</h2>
+                        
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">Full Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="fullName" 
+                                    name="fullName" 
+                                    class="form-input" 
+                                    placeholder="John Doe" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    placeholder="john@example.com" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    class="form-input" 
+                                    placeholder="(305) 555-1234" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address" class="form-label">Service Address *</label>
+                                <input 
+                                    type="text" 
+                                    id="address" 
+                                    name="address" 
+                                    class="form-input" 
+                                    placeholder="123 Main St, Miami, FL 33101" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="zip" class="form-label">ZIP Code *</label>
+                                <input 
+                                    type="text" 
+                                    id="zip" 
+                                    name="zip" 
+                                    class="form-input" 
+                                    placeholder="33101" 
+                                    maxlength="5"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="planSelect" class="form-label">Interested Plan *</label>
+                                <select id="planSelect" name="plan" class="form-select" required>
+                                    <option value="">Select a plan</option>
+                                    <option value="home">Home Internet - $60/month</option>
+                                    <option value="business">Business Internet - $80/month</option>
+                                    <option value="backup">Backup Internet - $110/month</option>
+                                    <option value="not-sure">Not Sure Yet</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Additional Information (Optional)</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    class="form-textarea" 
+                                    placeholder="Tell us about your needs, questions, or special requirements..."
+                                ></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+                                    <input type="checkbox" required style="width: 20px; height: 20px;">
+                                    <span style="font-size: 0.875rem; color: rgba(255, 255, 255, 0.8);">
+                                        I agree to receive communications about my service inquiry *
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Submit Request
+                            </button>
+                            
+                            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0;">
+                                We'll review your request and contact you within 24 hours
+                            </p>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div>
+                        <div class="feature-card" style="margin-bottom: 2rem; padding: 2rem;">
+                            <h3 style="margin-bottom: 1.5rem;">Prefer to Call?</h3>
+                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div style="display: flex; gap: 1rem; align-items: start;">
+                                    <div style="width: 40px; height: 40px; background: var(--glass-bg); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.25rem;">📞</div>
+                                    <div>
+                                        <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem; font-size: 1rem;">Phone</h4>
+                                        <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.9);">
+                                            <a href="tel:+1305XXXXXXX" style="color: inherit;">+1 (305) XXX-XXXX</a>
+                                        </p>
+                                        <p style="margin-bottom: 0; font-size: 0.875rem; color: rgba(255, 255, 255, 0.6);">
+                                            Mon-Fri: 9AM-6PM<br>Sat: 10AM-4PM
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; gap: 1rem; align-items: start;">
+                                    <div style="width: 40px; height: 40px; background: var(--glass-bg); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.25rem;">✉️</div>
+                                    <div>
+                                        <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem; font-size: 1rem;">Email</h4>
+                                        <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.9);">
+                                            <a href="mailto:info@tgtelecomm.com" style="color: inherit;">info@tgtelecomm.com</a>
+                                        </p>
+                                        <p style="margin-bottom: 0; font-size: 0.875rem; color: rgba(255, 255, 255, 0.6);">
+                                            Response within 4 hours
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; gap: 1rem; align-items: start;">
+                                    <div style="width: 40px; height: 40px; background: var(--glass-bg); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.25rem;">📍</div>
+                                    <div>
+                                        <h4 style="color: var(--neon-lime); margin-bottom: 0.5rem; font-size: 1rem;">Office</h4>
+                                        <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.9);">
+                                            Miami, Florida
+                                        </p>
+                                        <p style="margin-bottom: 0; font-size: 0.875rem; color: rgba(255, 255, 255, 0.6);">
+                                            By appointment only
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card" style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                            <h4 style="margin-bottom: 0.75rem;">Fast Setup</h4>
+                            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 0; font-size: 0.95rem;">
+                                Most customers are online within 24-48 hours of signing up!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section" style="background: var(--deep-purple-light);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Process</span>
+                    <h2 class="section-title">How It <span class="lime-text">Works</span></h2>
+                </div>
+                
+                <div class="features-grid" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: var(--neon-lime); color: var(--deep-purple);">1</div>
+                        <h3 class="feature-title">Submit Request</h3>
+                        <p class="feature-description">
+                            Fill out the form with your contact and address information.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: var(--neon-lime); color: var(--deep-purple);">2</div>
+                        <h3 class="feature-title">Coverage Check</h3>
+                        <p class="feature-description">
+                            We verify service availability at your address within 4 hours.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: var(--neon-lime); color: var(--deep-purple);">3</div>
+                        <h3 class="feature-title">Schedule Install</h3>
+                        <p class="feature-description">
+                            Choose a convenient time for setup—often same or next day.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: var(--neon-lime); color: var(--deep-purple);">4</div>
+                        <h3 class="feature-title">Get Connected</h3>
+                        <p class="feature-description">
+                            Our technician sets up your router and you're online!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Quick Links -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Have Questions? <span class="lime-text">We've Got Answers</span></h2>
+                    <p class="section-description">Check out our help resources or contact support</p>
+                </div>
+                
+                <div class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <a href="plans.html" class="feature-card" style="text-decoration: none; display: block;">
+                        <div class="feature-icon">💰</div>
+                        <h3 class="feature-title">View Plans & Pricing</h3>
+                        <p class="feature-description">
+                            Compare our Home, Business, and Backup plans
+                        </p>
+                    </a>
+                    
+                    <a href="coverage.html" class="feature-card" style="text-decoration: none; display: block;">
+                        <div class="feature-icon">📍</div>
+                        <h3 class="feature-title">Check Coverage</h3>
+                        <p class="feature-description">
+                            Verify we're available in your neighborhood
+                        </p>
+                    </a>
+                    
+                    <a href="support.html#faq" class="feature-card" style="text-decoration: none; display: block;">
+                        <div class="feature-icon">❓</div>
+                        <h3 class="feature-title">Browse FAQs</h3>
+                        <p class="feature-description">
+                            Common questions about setup, billing, and support
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TG TELECOMM</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">
+                        The local link to a global network. Connecting Miami with fast, reliable wireless internet.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="plans.html">Plans & Pricing</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="coverage.html">Coverage</a></li>
+                        <li><a href="business.html">Business</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255, 255, 255, 0.8);">📞 +1 (305) XXX-XXXX</li>
+                        <li><a href="mailto:info@tgtelecomm.com">✉️ info@tgtelecomm.com</a></li>
+                        <li style="color: rgba(255, 255, 255, 0.8);">🕒 Mon-Fri: 9AM-6PM</li>
+                        <li style="color: rgba(255, 255, 255, 0.8);">📍 Miami, FL</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TG Telecomm. All rights reserved. Built with ❤️ in Miami.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

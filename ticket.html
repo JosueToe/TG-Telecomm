@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Open a support ticket with TG Telecomm - Get help with your internet service issues.">
+    <meta name="keywords" content="support ticket, technical support, internet issues, TG Telecomm help">
+    
+    <title>Open a Ticket - TG Telecomm Support</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Initialize EmailJS with your Public Key
+            emailjs.init("vXtUOiZR1n1Sj4Z7d");
+        })();
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="TG Telecomm Logo" class="logo-img">
+                <span>TG TELECOMM</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#plans">Plans</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#coverage">Coverage</a></li>
+                <li><a href="index.html#business">Business</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="ticket.html" class="btn btn-ghost hide-mobile">Open Ticket</a>
+                <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" style="min-height: 60vh;">
+            <div class="container">
+                <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                    <h1>Open a <span class="gradient-text">Support Ticket</span></h1>
+                    <p class="hero-subheadline" style="margin: 0 auto;">
+                        Having an issue? Let us know and we'll get back to you as soon as possible.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ticket Form Section -->
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="feature-card" style="padding: 3rem;">
+                        <h2 style="margin-bottom: 2rem; text-align: center;">Submit a Support Request</h2>
+                        
+                        <form id="ticketForm">
+                            <div class="form-group">
+                                <label for="customerName" class="form-label">Your Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="customerName" 
+                                    name="customerName" 
+                                    class="form-input" 
+                                    placeholder="John Doe" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerEmail" class="form-label">Email Address *</label>
+                                <input 
+                                    type="email" 
+                                    id="customerEmail" 
+                                    name="customerEmail" 
+                                    class="form-input" 
+                                    placeholder="john@example.com" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerPhone" class="form-label">Phone Number *</label>
+                                <input 
+                                    type="tel" 
+                                    id="customerPhone" 
+                                    name="customerPhone" 
+                                    class="form-input" 
+                                    placeholder="(305) 555-1234" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="accountNumber" class="form-label">Account Number (Optional)</label>
+                                <input 
+                                    type="text" 
+                                    id="accountNumber" 
+                                    name="accountNumber" 
+                                    class="form-input" 
+                                    placeholder="If you're an existing customer"
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="issueType" class="form-label">Issue Type *</label>
+                                <select id="issueType" name="issueType" class="form-select" required>
+                                    <option value="">Select an issue type</option>
+                                    <option value="connection">Connection Issues</option>
+                                    <option value="slow-speed">Slow Internet Speed</option>
+                                    <option value="no-connection">No Connection</option>
+                                    <option value="equipment">Equipment/Router Issues</option>
+                                    <option value="billing">Billing Question</option>
+                                    <option value="installation">Installation/Setup Help</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="priority" class="form-label">Priority *</label>
+                                <select id="priority" name="priority" class="form-select" required>
+                                    <option value="">Select priority level</option>
+                                    <option value="low">Low - General question</option>
+                                    <option value="medium">Medium - Issue affecting service</option>
+                                    <option value="high">High - Complete service outage</option>
+                                    <option value="urgent">Urgent - Business-critical issue</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <input 
+                                    type="text" 
+                                    id="subject" 
+                                    name="subject" 
+                                    class="form-input" 
+                                    placeholder="Brief description of the issue" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description" class="form-label">Detailed Description *</label>
+                                <textarea 
+                                    id="description" 
+                                    name="description" 
+                                    class="form-textarea" 
+                                    placeholder="Please provide as much detail as possible about the issue you're experiencing..."
+                                    style="min-height: 200px;"
+                                    required
+                                ></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+                                    <input type="checkbox" required style="width: 20px; height: 20px;">
+                                    <span style="font-size: 0.875rem; color: var(--dark-text);">
+                                        I understand that submitting this ticket will send an email to TG Telecomm support *
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Submit Ticket
+                            </button>
+                            
+                            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: var(--mid-gray); margin-bottom: 0;">
+                                We typically respond to tickets within 4-8 hours during business hours
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Info -->
+        <section class="section" style="background: linear-gradient(135deg, rgba(255, 200, 200, 0.15) 0%, rgba(200, 240, 240, 0.15) 100%);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Other Ways to <span class="lime-text">Get Help</span></h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📞</div>
+                        <h3 class="feature-title">Call Us</h3>
+                        <p class="feature-description" style="margin-bottom: 1rem;">
+                            Speak directly with support
+                        </p>
+                        <p style="color: var(--aqua-teal); font-weight: 600; margin-bottom: 0;">
+                            (305) 903-9600
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">✉️</div>
+                        <h3 class="feature-title">Email Support</h3>
+                        <p class="feature-description" style="margin-bottom: 1rem;">
+                            Send us a detailed message
+                        </p>
+                        <p style="margin-bottom: 0;">
+                            <a href="mailto:sales@tgtelecomm.com" style="color: var(--aqua-teal); font-weight: 600;">
+                                sales@tgtelecomm.com
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3 class="feature-title">General Inquiry</h3>
+                        <p class="feature-description" style="margin-bottom: 1rem;">
+                            Not a technical issue?
+                        </p>
+                        <a href="index.html#contact" class="btn btn-secondary">Contact Form</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                        <img src="logo.png" alt="TG Telecomm Logo" style="height: 40px; width: auto;">
+                        <h4 style="margin: 0;">TG TELECOMM</h4>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">
+                        The local link to a global network. Connecting Miami with fast, reliable wireless internet.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#plans">Plans & Pricing</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#coverage">Coverage</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li style="color: rgba(255, 255, 255, 0.8);">📞 (305) 903-9600</li>
+                        <li><a href="mailto:sales@tgtelecomm.com">✉️ sales@tgtelecomm.com</a></li>
+                        <li style="color: rgba(255, 255, 255, 0.8);">🕒 Mon-Fri: 9AM-5PM</li>
+                        <li style="color: rgba(255, 255, 255, 0.8);">📍 Miami, FL</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TG Telecomm. All rights reserved. Made and built with ❤️ by the <a href="https://host-it.app/" target="_blank" rel="noopener noreferrer" style="color: var(--aqua-teal); text-decoration: none; font-weight: 600; transition: var(--transition-smooth);">Host-IT Team</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Ticket form handling with EmailJS
+        const ticketForm = document.getElementById('ticketForm');
+        if (ticketForm) {
+            ticketForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitButton = ticketForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                
+                // Show loading state
+                submitButton.innerHTML = '<span class="loading"></span> Submitting Ticket...';
+                submitButton.disabled = true;
+                
+                // Generate unique ticket ID
+                const ticketId = 'TKT-' + Date.now();
+                const submissionDate = new Date().toLocaleString('en-US', { 
+                    timeZone: 'America/New_York',
+                    dateStyle: 'full',
+                    timeStyle: 'short'
+                });
+                
+                // Get issue type text
+                const issueTypeSelect = document.getElementById('issueType');
+                const issueTypeText = issueTypeSelect.options[issueTypeSelect.selectedIndex].text;
+                
+                // Get priority text
+                const prioritySelect = document.getElementById('priority');
+                const priorityText = prioritySelect.options[prioritySelect.selectedIndex].text;
+                
+                // Prepare template parameters for EmailJS
+                const templateParams = {
+                    ticket_id: ticketId,
+                    from_name: document.getElementById('customerName').value,
+                    from_email: document.getElementById('customerEmail').value,
+                    phone_number: document.getElementById('customerPhone').value,
+                    account_number: document.getElementById('accountNumber').value || 'N/A',
+                    issue_type: issueTypeText,
+                    priority: priorityText,
+                    subject: document.getElementById('subject').value,
+                    issue_description: document.getElementById('description').value,
+                    submission_date: submissionDate
+                };
+                
+                // Send email using EmailJS
+                emailjs.send('service_uyn9scb', 'template_dvgf3fe', templateParams)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        
+                        // Show success message
+                        const successMessage = document.createElement('div');
+                        successMessage.style.cssText = `
+                            margin-top: 1rem;
+                            padding: 1.5rem;
+                            background: rgba(78, 205, 196, 0.15);
+                            border: 2px solid var(--aqua-teal);
+                            border-radius: 12px;
+                            color: var(--dark-text);
+                            text-align: center;
+                        `;
+                        successMessage.innerHTML = `
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                            <h3 style="color: var(--aqua-teal); margin-bottom: 0.5rem;">Ticket Submitted Successfully!</h3>
+                            <p style="margin-bottom: 0.5rem;">Your ticket ID is: <strong>${ticketId}</strong></p>
+                            <p style="margin-bottom: 0;">We've received your support request and will respond within 4-8 hours. You'll receive a confirmation email at <strong>${templateParams.from_email}</strong>.</p>
+                        `;
+                        
+                        ticketForm.parentElement.insertBefore(successMessage, ticketForm);
+                        ticketForm.style.display = 'none';
+                        
+                        // Scroll to success message
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Reset button
+                        submitButton.innerHTML = originalText;
+                        submitButton.disabled = false;
+                    }, function(error) {
+                        console.error('FAILED...', error);
+                        
+                        // Show error message
+                        const errorMessage = document.createElement('div');
+                        errorMessage.style.cssText = `
+                            margin-top: 1rem;
+                            padding: 1.5rem;
+                            background: rgba(231, 76, 60, 0.1);
+                            border: 2px solid var(--coral-red);
+                            border-radius: 12px;
+                            color: var(--dark-text);
+                            text-align: center;
+                        `;
+                        errorMessage.innerHTML = `
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">❌</div>
+                            <h3 style="color: var(--coral-red); margin-bottom: 0.5rem;">Submission Failed</h3>
+                            <p style="margin-bottom: 0;">There was an error submitting your ticket. Please try again or contact us directly at (305) 903-9600.</p>
+                        `;
+                        
+                        ticketForm.appendChild(errorMessage);
+                        
+                        // Reset button
+                        submitButton.innerHTML = originalText;
+                        submitButton.disabled = false;
+                        
+                        // Remove error message after 5 seconds
+                        setTimeout(() => {
+                            errorMessage.remove();
+                        }, 5000);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
+
