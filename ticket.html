@@ -189,6 +189,12 @@
                                 </label>
                             </div>
                             
+                            <!-- Honeypot field - hidden from users, visible to bots -->
+                            <div class="form-group" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none; visibility: hidden;">
+                                <label for="website">Website (leave blank)</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+                            
                             <button type="submit" class="btn btn-primary" style="width: 100%;">
                                 Submit Ticket
                             </button>
@@ -302,6 +308,38 @@
         if (ticketForm) {
             ticketForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                
+                // Perform spam check (using functions from script.js)
+                const spamCheck = (typeof window !== 'undefined' && window.performSpamCheck)
+                    ? window.performSpamCheck(ticketForm, 'ticketForm')
+                    : { isSpam: false };
+                
+                if (spamCheck.isSpam) {
+                    // Silently drop spam submissions
+                    console.log('Ticket submission blocked:', spamCheck.reason);
+                    const errorMessage = document.createElement('div');
+                    errorMessage.style.cssText = `
+                        margin-top: 1rem;
+                        padding: 1.5rem;
+                        background: rgba(231, 76, 60, 0.1);
+                        border: 2px solid var(--coral-red);
+                        border-radius: 12px;
+                        color: var(--dark-text);
+                        text-align: center;
+                        font-weight: 600;
+                    `;
+                    errorMessage.innerHTML = `
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚠️</div>
+                        <p style="margin: 0;">${spamCheck.reason}</p>
+                    `;
+                    
+                    const existingMessage = ticketForm.querySelector('[style*="border: 2px solid"]');
+                    if (existingMessage) existingMessage.remove();
+                    
+                    ticketForm.appendChild(errorMessage);
+                    setTimeout(() => errorMessage.remove(), 5000);
+                    return;
+                }
                 
                 const submitButton = ticketForm.querySelector('button[type="submit"]');
                 const originalText = submitButton.textContent;

@@ -166,14 +166,313 @@ const throttledHighlight = throttle(highlightActiveSection, 100);
 window.addEventListener('scroll', throttledHighlight);
 
 // ============================================
+// SPAM PROTECTION UTILITIES
+// ============================================
+
+// Track form interaction start time
+const formStartTimes = new Map();
+
+// Initialize form tracking when form is focused
+function initFormTracking(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    
+    // Track when user first interacts with form
+    let hasInteracted = false;
+    const startTime = Date.now();
+    
+    const trackInteraction = () => {
+        if (!hasInteracted) {
+            hasInteracted = true;
+            formStartTimes.set(formId, startTime);
+        }
+    };
+    
+    // Track various interaction types
+    form.addEventListener('focusin', trackInteraction, { once: true });
+    form.addEventListener('input', trackInteraction, { once: true });
+    form.addEventListener('change', trackInteraction, { once: true });
+    form.addEventListener('click', trackInteraction, { once: true });
+    form.addEventListener('keydown', trackInteraction, { once: true });
+    
+    // Also track when form becomes visible (in case user navigates to it)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                trackInteraction();
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    observer.observe(form);
+}
+
+// Check if form was filled too quickly (bot detection)
+function checkFormTime(formId, minTimeSeconds = 3) {
+    const startTime = formStartTimes.get(formId);
+    if (!startTime) {
+        // Form wasn't tracked, assume it's suspicious
+        return false;
+    }
+    
+    const timeOnForm = (Date.now() - startTime) / 1000;
+    return timeOnForm >= minTimeSeconds;
+}
+
+// Check honeypot field
+function checkHoneypot(form) {
+    const honeypot = form.querySelector('input[name="website"], input#website');
+    if (honeypot && honeypot.value.trim() !== '') {
+        return false; // Bot filled honeypot
+    }
+    return true;
+}
+
+// Enhanced email validation
+function validateEmail(email) {
+    if (!email) return false;
+    
+    // Basic email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return false;
+    
+    // Check for suspicious patterns
+    const suspiciousPatterns = [
+        /test@test/i,
+        /example@example/i,
+        /admin@admin/i,
+        /123@123/i,
+        /^[a-z0-9]+@[a-z0-9]+\.(test|local|example)$/i,
+        /@(test|spam|fake|temp)\./i
+    ];
+    
+    for (const pattern of suspiciousPatterns) {
+        if (pattern.test(email)) return false;
+    }
+    
+    // Check for too many repeated characters
+    const repeatedChars = email.match(/(.)\1{4,}/);
+    if (repeatedChars) return false;
+    
+    return true;
+}
+
+// Validate name for suspicious patterns
+function validateName(name) {
+    if (!name || name.trim().length < 2) return false;
+    
+    // Check for keyboard mashing (repeated characters)
+    const repeatedChars = name.match(/(.)\1{3,}/i);
+    if (repeatedChars) return false;
+    
+    // Check for suspicious patterns like "asdf", "qwerty", etc.
+    const suspiciousNames = /^(asdf|qwerty|test|admin|user|guest|spam|bot)[0-9]*$/i;
+    if (suspiciousNames.test(name.trim())) return false;
+    
+    // Check for too many numbers in name
+    const numbers = name.match(/\d/g);
+    if (numbers && numbers.length > name.length * 0.3) return false;
+    
+    return true;
+}
+
+// Validate message content
+function validateMessage(message) {
+    if (!message) return true; // Optional field
+    
+    const trimmed = message.trim();
+    
+    // Too short
+    if (trimmed.length < 3) return false;
+    
+    // Check for too few spaces (keyboard mashing)
+    const spaces = trimmed.match(/\s/g);
+    if (spaces && trimmed.length > 20 && spaces.length < trimmed.length * 0.05) {
+        return false; // Less than 5% spaces in long messages
+    }
+    
+    // Check for extreme repeated characters (like "aaaaaaaa")
+    const repeatedChars = trimmed.match(/(.)\1{10,}/i);
+    if (repeatedChars) return false;
+    
+    // Check for suspicious patterns
+    const suspiciousPatterns = [
+        /^[a-z]{1,3}$/i, // Very short single word
+        /^(.)\1+$/, // All same character
+        /^[0-9]+$/, // All numbers
+        /^(spam|test|asdf|qwerty)/i, // Suspicious starting words
+    ];
+    
+    for (const pattern of suspiciousPatterns) {
+        if (pattern.test(trimmed)) return false;
+    }
+    
+    // Check for excessive special characters (spam links)
+    const specialChars = trimmed.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g);
+    if (specialChars && specialChars.length > trimmed.length * 0.2) {
+        return false; // More than 20% special characters
+    }
+    
+    return true;
+}
+
+// Rate limiting using localStorage
+function checkRateLimit(formId, maxSubmissions = 1, timeWindowSeconds = 60) {
+    const storageKey = `form_rate_limit_${formId}`;
+    const now = Date.now();
+    
+    try {
+        const stored = localStorage.getItem(storageKey);
+        if (stored) {
+            const data = JSON.parse(stored);
+            const submissions = data.submissions.filter(
+                timestamp => (now - timestamp) < timeWindowSeconds * 1000
+            );
+            
+            if (submissions.length >= maxSubmissions) {
+                const timeLeft = Math.ceil((timeWindowSeconds * 1000 - (now - submissions[0])) / 1000);
+                return {
+                    allowed: false,
+                    timeLeft: timeLeft
+                };
+            }
+            
+            submissions.push(now);
+            localStorage.setItem(storageKey, JSON.stringify({ submissions }));
+            return { allowed: true };
+        } else {
+            localStorage.setItem(storageKey, JSON.stringify({ submissions: [now] }));
+            return { allowed: true };
+        }
+    } catch (e) {
+        // If localStorage fails, allow submission (graceful degradation)
+        console.warn('Rate limit check failed:', e);
+        return { allowed: true };
+    }
+}
+
+// Comprehensive spam check
+function performSpamCheck(form, formId) {
+    const errors = [];
+    
+    // 1. Check honeypot
+    if (!checkHoneypot(form)) {
+        console.log('Spam detected: Honeypot field filled');
+        return { isSpam: true, reason: 'Invalid submission detected.' };
+    }
+    
+    // 2. Check form time
+    if (!checkFormTime(formId, 3)) {
+        console.log('Spam detected: Form submitted too quickly');
+        return { isSpam: true, reason: 'Please take your time filling out the form (minimum 3 seconds).' };
+    }
+    
+    // 3. Rate limiting
+    const rateLimit = checkRateLimit(formId, 1, 60);
+    if (!rateLimit.allowed) {
+        console.log('Spam detected: Rate limit exceeded');
+        return { 
+            isSpam: true, 
+            reason: `Please wait ${rateLimit.timeLeft} seconds before submitting again.` 
+        };
+    }
+    
+    // 4. Validate email
+    const emailInput = form.querySelector('input[type="email"], input#email, input#customerEmail');
+    if (emailInput && emailInput.value) {
+        if (!validateEmail(emailInput.value)) {
+            errors.push('Please provide a valid email address.');
+        }
+    }
+    
+    // 5. Validate name
+    const nameInput = form.querySelector('input#fullName, input#customerName, input[name="fullName"], input[name="customerName"]');
+    if (nameInput && nameInput.value) {
+        if (!validateName(nameInput.value)) {
+            errors.push('Please provide a valid name.');
+        }
+    }
+    
+    // 6. Validate message (if present and has content)
+    const messageInput = form.querySelector('textarea#message, textarea#description, textarea[name="message"], textarea[name="description"]');
+    if (messageInput && messageInput.value && messageInput.value.trim()) {
+        if (!validateMessage(messageInput.value)) {
+            errors.push('Please provide a more detailed message.');
+        }
+    }
+    
+    // 7. Check for suspicious subject (ticket form)
+    const subjectInput = form.querySelector('input#subject, input[name="subject"]');
+    if (subjectInput && subjectInput.value) {
+        if (!validateMessage(subjectInput.value)) {
+            errors.push('Please provide a valid subject line.');
+        }
+    }
+    
+    if (errors.length > 0) {
+        return { isSpam: true, reason: errors.join(' ') };
+    }
+    
+    return { isSpam: false };
+}
+
+// Make functions globally available for ticket.html
+if (typeof window !== 'undefined') {
+    window.performSpamCheck = performSpamCheck;
+    window.checkHoneypot = checkHoneypot;
+    window.checkFormTime = checkFormTime;
+    window.checkRateLimit = checkRateLimit;
+    window.validateEmail = validateEmail;
+    window.validateName = validateName;
+    window.validateMessage = validateMessage;
+}
+
+// ============================================
 // FORM HANDLING
 // ============================================
+
+// Initialize form tracking
+document.addEventListener('DOMContentLoaded', () => {
+    initFormTracking('contactForm');
+    initFormTracking('ticketForm');
+});
 
 // Contact form submission with EmailJS
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // Perform spam check
+        const spamCheck = performSpamCheck(contactForm, 'contactForm');
+        if (spamCheck.isSpam) {
+            // Silently drop spam submissions (don't alert bots)
+            console.log('Submission blocked:', spamCheck.reason);
+            // Show generic error to user (don't reveal why it was blocked)
+            const errorMessage = document.createElement('div');
+            errorMessage.style.cssText = `
+                margin-top: 1rem;
+                padding: 1.5rem;
+                background: rgba(231, 76, 60, 0.1);
+                border: 2px solid var(--coral-red);
+                border-radius: 12px;
+                color: var(--dark-text);
+                text-align: center;
+                font-weight: 600;
+            `;
+            errorMessage.innerHTML = `
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚠️</div>
+                <p style="margin: 0;">${spamCheck.reason}</p>
+            `;
+            
+            // Remove any existing messages
+            const existingMessage = contactForm.querySelector('.form-success, [style*="border: 2px solid"]');
+            if (existingMessage) existingMessage.remove();
+            
+            contactForm.appendChild(errorMessage);
+            setTimeout(() => errorMessage.remove(), 5000);
+            return;
+        }
         
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;

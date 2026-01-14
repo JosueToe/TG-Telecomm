@@ -629,6 +629,12 @@
                                 ></textarea>
                             </div>
                             
+                            <!-- Honeypot field - hidden from users, visible to bots -->
+                            <div class="form-group" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none; visibility: hidden;">
+                                <label for="website">Website (leave blank)</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+                            
                             <button type="submit" class="btn btn-primary" style="width: 100%;">
                                 Submit Request
                             </button>
